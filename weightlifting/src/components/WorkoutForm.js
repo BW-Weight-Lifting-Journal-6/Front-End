@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
-
-
+import { connect } from 'react-redux';
+import { addPost } from '../actions';
 
 
 const WorkoutForm = (props) => {
-    const [user, setUser] = useState({
+    const [exercise, setExercise] = useState({
         name: "",
         reps: "",
         muscle: ""
     });
 
+    
     const handleSubmit = e => {
-        props.addPost(user)
+        props.addPost(exercise)
         e.preventDefault();
         props.history.push('/dashboard')
-        console.log(` WORKOUT FORM `,user)
+        console.log(` WORKOUT FORM `,exercise)
         
     }
 
     const handleChanges = e => {
         let name = e.target.name;
 
-        setUser({ ...user, [name]: e.target.value })
+        setExercise({ ...exercise, [name]: e.target.value })
     }
 
     return(
@@ -49,4 +50,4 @@ const WorkoutForm = (props) => {
     );
 };
 
-export default WorkoutForm;
+export default connect(null, { addPost })(WorkoutForm);

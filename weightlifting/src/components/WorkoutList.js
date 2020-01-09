@@ -13,7 +13,7 @@ const WorkoutList = (props) => {
    useEffect(() => {
       const id = localStorage.getItem('id')
       axiosWithAuth()
-         .get(`api/workout`)
+         .get(`api/workout/`)
          .then(res => {
             console.log(res)
             setworkouts(res.data)
