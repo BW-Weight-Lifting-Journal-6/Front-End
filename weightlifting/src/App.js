@@ -9,7 +9,12 @@ import Dashboard from './components/Dashboard'
 import SignUpForm from'./components/SignUpForm'
 import Login from './components/Login';
 import WorkoutForm from './components/WorkoutForm';
+<<<<<<< HEAD
 import WorkoutList from './components/WorkoutList';
+=======
+import WorkoutList from './components/WorkoutList'
+
+>>>>>>> e88ba1a420d4310a80285417ae16353ab52cdbd3
 
 import logo from '../src/images/LiftlogoColored.png'
 
@@ -60,7 +65,14 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={SignUpForm} />
         <Route exact path="/" component ={Landing} />
+<<<<<<< HEAD
         
+=======
+        <Route path="/workoutform" component={WorkoutForm}/>
+        <Route path="/workoutlist" component={WorkoutList}/>
+       
+
+>>>>>>> e88ba1a420d4310a80285417ae16353ab52cdbd3
       </Switch>
     </div>
   </Router>

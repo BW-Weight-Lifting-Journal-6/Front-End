@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { NavLink } from "react-router-dom";
 
-import WorkoutCard from "./WorkoutCard";
+import WorkoutCard from "./WorkoutCard"
 
 import styled from "styled-components";
 
@@ -44,7 +43,8 @@ const WorkoutList = (props) => {
    useEffect(() => {
       const id = localStorage.getItem('id')
       axiosWithAuth()
-         .get(`https://authbackend121.herokuapp.com/api/auth/workouts/user/${id}`)
+         .get(`api/workout`)
+
          .then(res => {
             console.log(res)
             setworkouts(res.data)
