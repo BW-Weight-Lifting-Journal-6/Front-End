@@ -40,11 +40,13 @@ const Dashboard = () => {
         return(
             <MainDashboard className="dashboard" style={{backgroundImage: `url(${imageUrl})` }}>
                 <FormDashboard>
+
                     <NavDashboard> 
                     <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/dashboard"> My Profile </NavLink>
                     <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/addworkoutform"> Add a New Workout </NavLink>
                     <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/myworkouts" > My Workouts </NavLink>
                     </NavDashboard>
+
                     
                     <h1>put user data here!</h1>
 

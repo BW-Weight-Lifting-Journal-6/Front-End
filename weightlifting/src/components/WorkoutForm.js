@@ -77,7 +77,9 @@ const WorkoutForm = (props) => {
     const handleSubmit = e => {
         props.addPost(user)
         e.preventDefault();
+
         console.log(` WORKOUT FORM `, user)
+
         
     }
 
@@ -87,7 +89,9 @@ const WorkoutForm = (props) => {
         setUser({ ...user, [name]: e.target.value })
     }
 
+
     const imageUrl = useWindowWidth() >= 650 ? desktopAddWorkoutImage : mobileAddWorkoutImage;
+
 
     return(
     
