@@ -11,6 +11,7 @@ import Login from './components/Login';
 import WorkoutForm from './components/WorkoutForm';
 import WorkoutList from './components/WorkoutList'
 
+
 import logo from '../src/images/LiftlogoColored.png'
 
 const Nav = styled.nav`
@@ -61,7 +62,8 @@ function App() {
         <Route exact path="/" component ={Landing} />
         <Route path="/workoutform" component={WorkoutForm}/>
         <Route path="/workoutlist" component={WorkoutList}/>
-        
+       
+
       </Switch>
     </div>
   </Router>
