@@ -13,6 +13,7 @@ const WorkoutForm = (props) => {
     const handleSubmit = e => {
         props.addPost(user)
         e.preventDefault();
+        props.history.push('/dashboard')
         console.log(` WORKOUT FORM `,user)
         
     }
