@@ -71,9 +71,16 @@ const SignupForm = ({ values, errors, touched, status }) => {
                 <TitleRegister>Let's Get Some Info Before We Start Lifting:</TitleRegister>
                     <ContentRegister>
                         <TextRegister><label className="label">Username</label></TextRegister>
-                        <InputRegister type="text" name="Username" placeholder=" Create a Username" />
+                            <InputRegister type="text" name="username" placeholder="Create a Username" />
+                            {touched.username && errors.username && (
+                            <p className="errors"> {errors.username}</p>
+                            )}
+
                         <TextRegister><label className="Password">Password</label></TextRegister>
-                        <InputRegister type="password" name="Password" placeholder=" Create a Password " />
+                            <InputRegister type="password" name="password" placeholder="Create a Password " />
+                            {touched.password && errors.password && (
+                            <p className="errors"> {errors.password}</p>
+                            )}
                         <ButtonRegister>Register New User</ButtonRegister>
                     </ContentRegister>
             </FormRegister>
@@ -112,7 +119,7 @@ const FormikUserForm = withFormik({
     }),
     handleSubmit(values, { setStatus, props }) {
         axios
-            .post("https://authbackend121.herokuapp.com/api/auth/register", values)
+            .post("https://weight-lifting-api.herokuapp.com/api/auth/register", values)
             .then(response => {
                 console.log(response);
                 setStatus(response.data);
