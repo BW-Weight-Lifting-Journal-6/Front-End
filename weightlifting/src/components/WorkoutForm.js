@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { addPost } from '../actions';
 
 
 
-const WorkoutForm = props => {
+
+const WorkoutForm = (props) => {
     const [user, setUser] = useState({
         name: "",
-        date: "",
         reps: "",
         muscle: ""
     });
@@ -16,6 +14,7 @@ const WorkoutForm = props => {
         props.addPost(user)
         e.preventDefault();
         console.log(` WORKOUT FORM `,user)
+        
     }
 
     const handleChanges = e => {
@@ -27,15 +26,10 @@ const WorkoutForm = props => {
     return(
     <div>
         <form >
-           <input placeholder='Name of exercise' 
+           <input placeholder='Name of Exercise' 
                   name='name' 
                   type= 'text'
                   value={props.name} 
-                  onChange={handleChanges}/>
-           <input placeholder='Date' 
-                  name='date' 
-                  type= 'text'
-                  value={props.date}
                   onChange={handleChanges}/>
            <input placeholder='Number of Reps' 
                   name='reps' 
@@ -52,6 +46,6 @@ const WorkoutForm = props => {
     </div>
 
     );
-}
+};
 
-export default connect(null, { addPost })(WorkoutForm);
+export default WorkoutForm;
