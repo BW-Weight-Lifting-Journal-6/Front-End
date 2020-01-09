@@ -70,7 +70,6 @@ height: 35px;
 const WorkoutForm = (props) => {
     const [user, setUser] = useState({
         name: "",
-        date: "",
         reps: "",
         muscle: ""
     });
@@ -107,12 +106,6 @@ const WorkoutForm = (props) => {
                         name='name' 
                         type= 'text'
                         value={props.name} 
-                        onChange={handleChanges}/>
-            <TextWorkout>Weight</TextWorkout>
-            <InputWorkout placeholder='Weight' 
-                        name='weight' 
-                        type= 'text'
-                        value={props.date}
                         onChange={handleChanges}/>
             <TextWorkout>Number of Reps</TextWorkout>
             <InputWorkout placeholder='Number of Reps' 
