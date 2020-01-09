@@ -69,7 +69,7 @@ const Login = props => {
   const onSubmit = e => {
     e.preventDefault();
     axios
-    .post('https://authbackend121.herokuapp.com/api/auth/login', userCredentials)
+    .post('https://weight-lifting-api.herokuapp.com/api/auth/login', userCredentials)
     .then(res => {
       localStorage.setItem('token', res.data.payload)
       props.history.push('/dashboard')

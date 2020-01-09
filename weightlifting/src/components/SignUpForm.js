@@ -5,56 +5,50 @@ import axios from 'axios';
 import styled from "styled-components";
 
 import desktopRegisterImage from '../images/register.jpg';
-import mobileRegisterImage from '../images/register-mobile.jpg';
+import mobileRegisterImage from '../images/register-mobile.jpg'
 
-const MainRegister = styled.div`
+const Main = styled.div`
 height: 89vh;
+background-color: #fff;
 display: flex;
-flex-direction: column;
-justify-content: center;
 align-items: center;
-`
-
-const FormRegister = styled(Form)`
-display: flex;
+justify-content: center;
 flex-direction: column;
-border: 3px solid #17A2B8;
-background-color: #ffffff;
-padding: 20px 40px 40px 40px;
-max-width: 70%;
-min-width: 300px;
+text-align: center;
 `
 
-const TitleRegister = styled.h3`
+const Form2 = styled(Form)`
+border: 3px solid black;
+background-color: #ffffff;
+padding: 20px;
+`;
+
+const Input = styled(Field)`
+margin: 3%;
+`
+const Title = styled.h3`
 text-align: center;
 margin: 10%;
 `
-const ContentRegister = styled.div`
+const Text = styled.div`
 display: flex;
 flex-direction: column;
-align-items: flex-start;
-padding: 10px 0 40px 0;
+padding: 60px;
 `
 
-const TextRegister = styled.p`
-display: flex;
-flex-direction: column;
-`
-
-const InputRegister = styled(Field)`
-padding: 5px 0;
+const Input2 = styled(Field)`
 width: 100%;
+margin-top: 5%;
+margin-bottom: 5%;
 `
 
-const ButtonRegister = styled.button`
-background-color: #17A2B8;
-border-radius: 8px;
-font-size: 1rem;
-margin-top: 10%;
-width: 200px;
-height: 35px;
-color: white;
+const Buttonc = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
 `
+
+
 
 const SignupForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
@@ -66,18 +60,29 @@ const SignupForm = ({ values, errors, touched, status }) => {
     const imageUrl = useWindowWidth() >= 650 ? desktopRegisterImage : mobileRegisterImage;
 
     return (
-        <MainRegister className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
-            <FormRegister >
-                <TitleRegister>Let's Get Some Info Before We Start Lifting:</TitleRegister>
-                    <ContentRegister>
-                        <TextRegister><label className="label">Username</label></TextRegister>
-                        <InputRegister type="text" name="Username" placeholder=" Create a Username" />
-                        <TextRegister><label className="Password">Password</label></TextRegister>
-                        <InputRegister type="password" name="Password" placeholder=" Create a Password " />
-                        <ButtonRegister>Register New User</ButtonRegister>
-                    </ContentRegister>
-            </FormRegister>
-        </MainRegister>
+
+        <Main className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
+            <Form2 >
+                <Title>Wanna Register?</Title>
+                <Text>
+                <label className="label">Username</label>
+                <Input2 type="text" name="username" placeholder="Create a Username" />
+                {touched.username && errors.username && (
+                    <p className="errors"> {errors.username}</p>
+                )}
+                <label className="Password">Password</label>
+                <Input2 type="password" name="password" placeholder="Create a Password " />
+                {touched.password && errors.password && (
+                    <p className="errors"> {errors.password}</p>
+                )}
+                
+                <Buttonc>
+                    <button className="button is-primary">Sign Up</button>
+                </Buttonc>
+                </Text>
+            </Form2>
+
+        </Main>
     );
 };
 
@@ -95,8 +100,7 @@ const useWindowWidth = () => {
 
     return windowWidth;
     };
-    
-    
+
 const FormikUserForm = withFormik({
     mapPropsToValues({ username, password}) {
         return {
@@ -112,7 +116,7 @@ const FormikUserForm = withFormik({
     }),
     handleSubmit(values, { setStatus, props }) {
         axios
-            .post("https://authbackend121.herokuapp.com/api/auth/register", values)
+            .post("https://weight-lifting-api.herokuapp.com/api/auth/register", values)
             .then(response => {
                 console.log(response);
                 setStatus(response.data);
@@ -120,8 +124,151 @@ const FormikUserForm = withFormik({
 
             })
             .catch(err => console.log(err.response));
+           
     }
 
 })(SignupForm);
 
 export default FormikUserForm;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { withFormik, Form, Field } from 'formik';
+// import * as yup from 'yup';
+// import axios from 'axios';
+// import styled from "styled-components";
+
+// import desktopRegisterImage from '../images/register.jpg';
+// import mobileRegisterImage from '../images/register-mobile.jpg';
+
+// const MainRegister = styled.div`
+// height: 89vh;
+// display: flex;
+// flex-direction: column;
+// justify-content: center;
+// align-items: center;
+// `
+
+// const FormRegister = styled(Form)`
+// display: flex;
+// flex-direction: column;
+// border: 3px solid #17A2B8;
+// background-color: #ffffff;
+// padding: 20px 40px 40px 40px;
+// max-width: 70%;
+// min-width: 300px;
+// `
+
+// const TitleRegister = styled.h3`
+// text-align: center;
+// margin: 10%;
+// `
+// const ContentRegister = styled.div`
+// display: flex;
+// flex-direction: column;
+// align-items: flex-start;
+// padding: 10px 0 40px 0;
+// `
+
+// const TextRegister = styled.p`
+// display: flex;
+// flex-direction: column;
+// `
+
+// const InputRegister = styled(Field)`
+// padding: 5px 0;
+// width: 100%;
+// `
+
+// const ButtonRegister = styled.button`
+// background-color: #17A2B8;
+// border-radius: 8px;
+// font-size: 1rem;
+// margin-top: 10%;
+// width: 200px;
+// height: 35px;
+// color: white;
+// `
+
+// const SignupForm = ({ values, errors, touched, status }) => {
+//     const [user, setUser] = useState([]);
+
+//     useEffect(() => {
+//         status && setUser(users => [...users, status]);
+//     }, [status]);
+
+//     const imageUrl = useWindowWidth() >= 650 ? desktopRegisterImage : mobileRegisterImage;
+
+//     return (
+//         <MainRegister className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
+//             <FormRegister >
+//                 <TitleRegister>Let's Get Some Info Before We Start Lifting:</TitleRegister>
+//                     <ContentRegister>
+//                         <TextRegister><label className="label">Username</label></TextRegister>
+//                         <InputRegister type="text" name="Username" placeholder=" Create a Username" />
+//                         <TextRegister><label className="Password">Password</label></TextRegister>
+//                         <InputRegister type="password" name="Password" placeholder=" Create a Password " />
+//                         <ButtonRegister type="submit">Register New User</ButtonRegister>
+//                     </ContentRegister>
+//             </FormRegister>
+//         </MainRegister>
+//     );
+// };
+
+// const useWindowWidth = () => {
+//     const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
+
+//     const handleWindowResize = () => {
+//         setWindowWidth(window.innerWidth);
+//     };
+
+//     useEffect(() => {
+//         window.addEventListener('resize', handleWindowResize);
+//         return () => window.removeEventListener('resize', handleWindowResize);
+//     },[]);
+
+//     return windowWidth;
+//     };
+    
+    
+// const FormikUserForm = withFormik({
+//     mapPropsToValues({ username, password}) {
+//         return {
+//             username: username || "",
+//             password: password || ""  
+
+//         };
+//     },
+//     validationSchema: yup.object().shape({
+//         username: yup.string().required(),
+//         password: yup.string().required()
+
+//     }),
+//     handleSubmit(values, { setStatus, props }) {
+//         axios
+//             .post("https://weight-lifting-api.herokuapp.com/api/auth/register", values)
+//             .then(response => {
+//                 console.log(response);
+//                 setStatus(response.data);
+//                 props.history.push('/login')
+
+//             })
+//             .catch(err => console.log(err.response));
+//     }
+
+// })(SignupForm);
+
+// export default FormikUserForm;
