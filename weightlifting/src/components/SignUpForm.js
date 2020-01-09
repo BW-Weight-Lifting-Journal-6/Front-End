@@ -116,7 +116,7 @@ const FormikUserForm = withFormik({
     }),
     handleSubmit(values, { setStatus, props }) {
         axios
-            .post("https://authbackend121.herokuapp.com/api/auth/register", values)
+            .post("https://weight-lifting-api.herokuapp.com/api/auth/register", values)
             .then(response => {
                 console.log(response);
                 setStatus(response.data);

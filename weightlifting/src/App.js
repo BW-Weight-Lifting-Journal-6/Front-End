@@ -9,6 +9,8 @@ import Dashboard from './components/Dashboard'
 import SignUpForm from'./components/SignUpForm'
 import Login from './components/Login';
 import WorkoutForm from './components/WorkoutForm';
+import WorkoutList from './components/WorkoutList'
+
 
 import logo from '../src/images/LiftlogoColored.png'
 
@@ -59,6 +61,9 @@ function App() {
         <Route path="/register" component={SignUpForm} />
         <Route exact path="/" component ={Landing} />
         <Route path="/workoutform" component={WorkoutForm}/>
+        <Route path="/workoutlist" component={WorkoutList}/>
+       
+
       </Switch>
     </div>
   </Router>

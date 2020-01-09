@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 const WorkoutForm = (props) => {
     const [user, setUser] = useState({
         name: "",
-        date: "",
         reps: "",
         muscle: ""
     });
@@ -14,6 +13,7 @@ const WorkoutForm = (props) => {
     const handleSubmit = e => {
         props.addPost(user)
         e.preventDefault();
+        props.history.push('/dashboard')
         console.log(` WORKOUT FORM `,user)
         
     }
@@ -31,11 +31,6 @@ const WorkoutForm = (props) => {
                   name='name' 
                   type= 'text'
                   value={props.name} 
-                  onChange={handleChanges}/>
-           <input placeholder='Date' 
-                  name='date' 
-                  type= 'text'
-                  value={props.date}
                   onChange={handleChanges}/>
            <input placeholder='Number of Reps' 
                   name='reps' 

@@ -42,8 +42,10 @@ const Dashboard = () => {
                 <FormDashboard>
                     <DashboardNav> 
                     <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to=""> My Profile </NavLink>
-                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/addworkout"> Add a New Workout </NavLink>
-                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="" > My Workouts </NavLink>
+
+                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/workoutform"> Add a New Workout </NavLink>
+                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/workoutlist" > My Workouts </NavLink>
+
                     </DashboardNav>
                     
                     <h1>put user data here!</h1>
