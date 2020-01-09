@@ -15,6 +15,7 @@ const WorkoutForm = (props) => {
         props.addPost(user)
         e.preventDefault();
         console.log(` WORKOUT FORM `,user)
+        
     }
 
     const handleChanges = e => {

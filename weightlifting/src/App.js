@@ -58,6 +58,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={SignUpForm} />
         <Route exact path="/" component ={Landing} />
+        <Route path="/workoutform" component={WorkoutForm}/>
       </Switch>
     </div>
   </Router>

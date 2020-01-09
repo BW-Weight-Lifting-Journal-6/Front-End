@@ -24,7 +24,7 @@ const WorkoutCard = props => {
 
     const DeleteWorkout = () => {
         axiosWithAuth()
-            .delete(`https://authbackend121.herokuapp.com/api/auth/workouts/${id}`)
+            .delete(`https://authbackend121.herokuapp.com/api/auth/workout/${id}`)
             .then(response => {
                 console.log('deleted workout', response);
             })

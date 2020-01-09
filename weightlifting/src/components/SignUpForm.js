@@ -124,6 +124,7 @@ const FormikUserForm = withFormik({
 
             })
             .catch(err => console.log(err.response));
+           
     }
 
 })(SignupForm);
