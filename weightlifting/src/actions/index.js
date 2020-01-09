@@ -6,8 +6,8 @@ export const ADD_POST_FAIL = 'ADD_POST_FAIL';
 
 
 export const addPost = (post) => (dispatch) => {
-    axios
-      .post('https://weight-lifting-api.herokuapp.com/api/workout/', post)
+    axiosWithAuth()
+      .post('api/workout/', post)
       .then (res => {
         dispatch({ 
           type: ADD_POST, payload: res});
