@@ -24,7 +24,7 @@ max-width: 60%;
 min-width: 250px;
 `
 
-const DashboardNav = styled.div`
+const NavDashboard = styled.div`
 dislplay: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -40,16 +40,16 @@ const Dashboard = () => {
         return(
             <MainDashboard className="dashboard" style={{backgroundImage: `url(${imageUrl})` }}>
                 <FormDashboard>
-                    <DashboardNav> 
-                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to=""> My Profile </NavLink>
 
-                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/workoutform"> Add a New Workout </NavLink>
-                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/workoutlist" > My Workouts </NavLink>
+                    <NavDashboard> 
+                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/dashboard"> My Profile </NavLink>
+                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/addworkoutform"> Add a New Workout </NavLink>
+                    <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/myworkouts" > My Workouts </NavLink>
+                    </NavDashboard>
 
-                    </DashboardNav>
                     
                     <h1>put user data here!</h1>
-                
+
                 </FormDashboard>
             </MainDashboard>
         )

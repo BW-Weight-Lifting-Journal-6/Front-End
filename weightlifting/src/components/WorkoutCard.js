@@ -12,9 +12,6 @@ const Button = styled.button`
     text-decoration: none;
 `;
 
-
-
-
 const WorkoutCard = props => {
 
     console.log('testing props')

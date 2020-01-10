@@ -100,7 +100,6 @@ const Login = props => {
                 onChange={handleChange} />
         </ContentLogin>
         <ButtonLogin> Log In </ButtonLogin>
-        
       </FormLogin>
     </MainLogin>
   );
