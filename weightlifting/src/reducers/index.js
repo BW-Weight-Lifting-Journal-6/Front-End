@@ -2,8 +2,11 @@ import { CREATE_WORKOUT_START, CREATE_WORKOUT_SUCCESS, CREATE_WORKOUT_FAILURE, D
 
 const initialState = {
     workouts: [],
+    isPosting: false,
     isFetching: false,
-    error: ''
+    isDeleting: false,
+    error: '',
+    userId: localStorage.getItem('userId')
 }
 
 export const reducer = (state = initialState, action) => {

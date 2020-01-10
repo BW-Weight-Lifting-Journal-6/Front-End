@@ -1,7 +1,7 @@
-import React, {useContext} from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+
 import styled from "styled-components";
-import axiosWithAuth from "../utils/axiosWithAuth";
+
 import { connect } from 'react-redux'
 
 import {deleteWorkout} from "../actions/"
@@ -43,9 +43,9 @@ const WorkoutCard = props => {
     return (
         <div className="workout-card">
             <div>
-                <h3>{props.exercise}</h3>
+                <h3>{props.name}</h3>
                 <p>Reps: {props.reps}</p>
-                <p>Muscle:{props.muscle}</p>
+                <p>Muscle:{props.region}</p>
             </div>
             <Button onClick={EditWorkout}>Edit</Button>
             <Button onClick={deleteWorkout}>Delete</Button>

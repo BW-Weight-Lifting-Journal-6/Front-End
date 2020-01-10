@@ -69,9 +69,12 @@ const Login = props => {
   const onSubmit = e => {
     e.preventDefault();
     axios
-    .post('https://weight-lifting-api.herokuapp.com/api/auth/login', userCredentials)
+    .post('https://weightlifting-app.herokuapp.com/api/login', userCredentials)
     .then(res => {
+      console.log(res);
       localStorage.setItem('token', res.data.payload)
+      
+     
       props.history.push('/dashboard')
     })
     .catch(err => console.error(err))

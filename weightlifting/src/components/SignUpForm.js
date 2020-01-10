@@ -80,7 +80,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
                             {touched.password && errors.password && (
                             <p className="errors"> {errors.password}</p>
                             )}
-                        <ButtonRegister>Register New User</ButtonRegister>
+                        <ButtonRegister type="submit">Register New User</ButtonRegister>
                     </ContentRegister>
             </FormRegister>
         </MainRegister>
@@ -112,7 +112,7 @@ const FormikUserForm = withFormik({
     }),
     handleSubmit(values, { setStatus, props }) {
         axios
-            .post("https://weight-lifting-api.herokuapp.com/api/auth/register", values)
+            .post("https://weightlifting-app.herokuapp.com/api/register", values)
             .then(response => {
                 console.log(response);
                 setStatus(response.data);

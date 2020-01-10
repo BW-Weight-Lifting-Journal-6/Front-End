@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from 'react-redux';
-import axios from '../utils/axiosWithAuth';
+
 import { addWorkout } from '../actions';
+import jwt from "jsonwebtoken"
 
 import desktopAddWorkoutImage from '../images/addworkout.jpg';
 import mobileAddWorkoutImage from '../images/landing-mobile.jpg';
+
 
 
 const MainWorkout = styled.div`
@@ -73,14 +75,17 @@ font-size: 1.7rem;
 color:black;
 `;
 
-
+const user = jwt.decode(localStorage.getItem("token"))
+console.log('user', user);
 const WorkoutForm = (props) => {
-    const userId = localStorage.getItem('id')
+    
     const [add, setAdd] = useState({
-        exercise: "",
+
+        name: "",
         reps: "",
-        muscle: "",
-        user_id: userId
+        region: "",
+        user_id: props.userId
+       
     });
 
     const handleChanges = e => {
@@ -88,17 +93,16 @@ const WorkoutForm = (props) => {
         setAdd({ ...add, [e.target.name]: e.target.value })
     }
 
-    
 
     const Processing = id => {
         props.history.push('/workit');
         setTimeout(()=>{
             props.history.push(`/dashboard`)
-        }, 1000) 
+        }, 1500) 
     } 
 
     const handleSubmit = e => {
-        
+        console.log(add);
         e.preventDefault();
         props.addWorkout(add)
         Processing();    
@@ -118,9 +122,9 @@ const WorkoutForm = (props) => {
             <ContentWorkout>
             <TextWorkout>Exercise</TextWorkout>
             <InputWorkout placeholder='Name of Exercise' 
-                        name='exercise' 
+                        name='name' 
                         type= 'text'
-                        value={add.exercise} 
+                        value={add.name} 
                         onChange={handleChanges}/>
             <TextWorkout>Number of Reps</TextWorkout>
             <InputWorkout placeholder='Number of Reps' 
@@ -129,10 +133,10 @@ const WorkoutForm = (props) => {
                         value={add.reps}
                         onChange={handleChanges}/>
             <TextWorkout>Focus</TextWorkout>
-            <InputWorkout placeholder='Muscle Group Targeted' 
-                        name='muscle' 
+            <InputWorkout placeholder='Muscle Region Targeted' 
+                        name='region' 
                         type= 'text'
-                        value={add.muscle}
+                        value={add.region}
                         onChange={handleChanges}/>
             </ContentWorkout>
             <ButtonWorkout type='submit' >Submit</ButtonWorkout>
@@ -168,59 +172,3 @@ const useWindowWidth = () => {
 
 
 
-
-
-
-// import React, { useState } from 'react';
-// import { connect } from 'react-redux';
-// import { addPost } from '../actions';
-
-
-// const WorkoutForm = (props) => {
-//     const [exercise, setExercise] = useState({
-//         name: "",
-//         reps: "",
-//         muscle: ""
-//     });
-
-    
-//     const handleSubmit = e => {
-//         props.addPost(exercise)
-//         e.preventDefault();
-//         props.history.push('/dashboard')
-//         console.log(` WORKOUT FORM `,exercise)
-        
-//     }
-
-//     const handleChanges = e => {
-//         let name = e.target.name;
-
-//         setExercise({ ...exercise, [name]: e.target.value })
-//     }
-
-//     return(
-//     <div>
-//         <form >
-//            <input placeholder='Name of Exercise' 
-//                   name='name' 
-//                   type= 'text'
-//                   value={props.name} 
-//                   onChange={handleChanges}/>
-//            <input placeholder='Number of Reps' 
-//                   name='reps' 
-//                   type= 'text'
-//                   value={props.reps}
-//                   onChange={handleChanges}/>
-//                   <input placeholder='Muscle Group Worked' 
-//                   name='muscle' 
-//                   type= 'text'
-//                   value={props.muscle}
-//                   onChange={handleChanges}/>
-//             <button type='submit' onClick={handleSubmit}>Submit</button>
-//         </form>
-//     </div>
-
-//     );
-// };
-
-// export default connect(null, { addPost })(WorkoutForm);
