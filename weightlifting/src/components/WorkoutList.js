@@ -1,97 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-
-import { NavLink } from "react-router-dom";
-
-
-import WorkoutCard from "./WorkoutCard";
+import WorkoutCard from "./WorkoutCard"
 
 import styled from "styled-components";
+import { connect } from 'react-redux'
+import { getWorkout } from "../actions/"
 
-import desktopAddWorkoutListImage from '../images/viewworkout.jpg';
-import mobileAddWorkoutListImage from '../images/viewworkout-mobile.jpg';
+const Work = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: 3rem;
+   max-width: 73rem;
+`;
 
-const MainWorkoutList = styled.div`
-height: 89vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 0 10%;
-`
-
-const NavDashboard = styled.div`
-dislplay: flex;
-flex-direction: row;
-justify-content: space-between;
-max-width: 100%;
-background-color: lightgray;
-padding: 20px;
-`
-
-const FormWorkoutList = styled.form`
-display: flex;
-flex-direction: column;
-border: 3px solid #17A2B8;
-background-color: #ffffff;
-padding: 20px 40px 40px 40px;
-max-width: 60%;
-min-width: 200px;
-`
+const EachWork = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 0.3rem solid #4169E1;
+   width: 13rem;
+   padding: 2%;
+   margin: 1rem 0;
+   
+`;
 
 const WorkoutList = (props) => {
-   const [workouts, setworkouts] = useState([])
-   
+
+   console.log('will it show?', props)
+
+   const id = localStorage.getItem('id')
 
    useEffect(() => {
-      const id = localStorage.getItem('id')
-      axiosWithAuth()
-         .get(`api/workout`)
+      props.getWorkout(id)
 
-         .then(res => {
-            console.log(res)
-            setworkouts(res.data)
-         })
    }, [])
-
-   const imageUrl = useWindowWidth() >= 650 ? desktopAddWorkoutListImage : mobileAddWorkoutListImage;
-
    return (
-      <MainWorkoutList className="workout-list" style={{backgroundImage: `url(${imageUrl})` }}>
-         <FormWorkoutList>
-            <NavDashboard> 
-                  <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/dashboard"> My Profile </NavLink>
-                  <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/addworkoutform"> Add a New Workout </NavLink>
-                  <NavLink style={{textDecoration: 'none', color: '#ff914d'}} to="/myworkouts" > My Workouts </NavLink>
-            </NavDashboard>
-            
-         
-         {workouts.map(workout => {
+      <Work>
+         {props.workouts.map(workout => {
             return (
-               <div key={workout.id}>
-                  <WorkoutCard {...workout} {...props} />
-               </div>
+
+               <EachWork>
+                  <WorkoutCard {...workout} {...props}/>
+               </EachWork>
             )
          })}
-         </FormWorkoutList>
-      </MainWorkoutList>
+      </Work>
    )
 }
 
-const useWindowWidth = () => {
-   const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
-
-   const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-   };
-
-   useEffect(() => {
-      window.addEventListener('resize', handleWindowResize);
-      return () => window.removeEventListener('resize', handleWindowResize);
-   },[]);
-
-   return windowWidth;
-   };
-
-export default WorkoutList
+export default connect( state => {
+   return {
+       workouts: state.workouts,
+       isFetching: state.isFetching,
+       error: state.workouts
+   }
+}, {getWorkout}) (WorkoutList);
 

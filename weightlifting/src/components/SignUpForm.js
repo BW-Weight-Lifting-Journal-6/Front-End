@@ -87,19 +87,15 @@ const SignupForm = ({ values, errors, touched, status }) => {
         </MainRegister>
     );
 };
-
 const useWindowWidth = () => {
     const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
-
     const handleWindowResize = () => {
         setWindowWidth(window.innerWidth);
     };
-
     useEffect(() => {
         window.addEventListener('resize', handleWindowResize);
         return () => window.removeEventListener('resize', handleWindowResize);
     },[]);
-
     return windowWidth;
     };
     
@@ -109,13 +105,11 @@ const FormikUserForm = withFormik({
         return {
             username: username || "",
             password: password || ""  
-
         };
     },
     validationSchema: yup.object().shape({
         username: yup.string().required(),
         password: yup.string().required()
-
     }),
     handleSubmit(values, { setStatus, props }) {
         axios
@@ -124,11 +118,8 @@ const FormikUserForm = withFormik({
                 console.log(response);
                 setStatus(response.data);
                 props.history.push('/login')
-
             })
             .catch(err => console.log(err.response));
     }
-
 })(SignupForm);
-
 export default FormikUserForm;

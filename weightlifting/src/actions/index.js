@@ -1,16 +1,53 @@
-import axios from 'axios';
-export const ADD_POST = 'ADD_POST';
-export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
-export const ADD_POST_FAIL = 'ADD_POST_FAIL';
 
 
 
-export const addPost = (post) => (dispatch) => {
-    axios 
-      .post('https://weight-lifting-api.herokuapp.com/api/workout/', post)
-      .then (res => {
-        dispatch({ 
-          type: ADD_POST, payload: res});
-      })
-      .catch(err => console.log(err))
-    }
+import axiosWithAuth from "../utils/axiosWithAuth";
+
+export const FETCH_WORKOUT_START = 'FETCH_WORKOUT_START';
+export const FETCH_WORKOUT_SUCCESS = 'FETCH_WORKOUT_SUCCESS';
+export const FETCH_WORKOUT_FAILURE = 'FETCH_WORKOUT_FAILURE';
+
+export const CREATE_WORKOUT_START = 'CREATE_WORKOUT_START';
+export const CREATE_WORKOUT_SUCCESS = 'CREATE_WORKOUT_SUCCESS'
+export const CREATE_WORKOUT_FAILURE = 'CREATE_WORKOUT_FAILURE'
+
+export const DELETE_WORKOUT_START = 'CREATE_WORKOUT_START';
+export const DELETE_WORKOUT_SUCCESS = 'CREATE_WORKOUT_SUCCESS'
+export const DELETE_WORKOUT_FAILURE = 'CREATE_WORKOUT_FAILURE'
+
+
+
+
+export const addWorkout = (add) => dispatch => {
+    dispatch({type:CREATE_WORKOUT_START })
+    axiosWithAuth()
+    .post(`https://weight-lifting-api.herokuapp.com/api/workout/`, add )
+    .then( response => {
+        console.log('response from POST', response);
+        dispatch({type: CREATE_WORKOUT_SUCCESS, payload: response.data })
+    })
+    .catch(error => dispatch({type: CREATE_WORKOUT_FAILURE, payload: error}))
+     
+}
+
+export const deleteWorkout = id => dispatch => {
+    dispatch({type: DELETE_WORKOUT_START})
+    axiosWithAuth()
+    .delete(`https://weight-lifting-api.herokuapp.com/api/workout/${id}`)
+    .then( response => {
+        console.log('response from DELETE', response);
+        dispatch({type: DELETE_WORKOUT_SUCCESS, payload: response.data})
+    })
+    .catch(error => dispatch({type: DELETE_WORKOUT_FAILURE, payload: error}))
+}
+
+export const getWorkout = id => dispatch => {
+    dispatch({type: FETCH_WORKOUT_START })
+    axiosWithAuth()
+    .get(`https://weight-lifting-api.herokuapp.com/api/workout//${id}`)
+    .then( response => {
+        console.log('response from fetch WORKOUT', response);
+        dispatch({type: FETCH_WORKOUT_SUCCESS, payload: response.data})
+    })
+    .catch(error => dispatch({type: FETCH_WORKOUT_FAILURE, payload: error}))
+}
