@@ -15,6 +15,7 @@ justify-content: center;
 `
 
 
+
 const ButtonLink = styled.button`
 
     background-color: yellow;
@@ -23,6 +24,7 @@ const ButtonLink = styled.button`
     color:black;
 
 `;
+
 
 
 
@@ -36,7 +38,8 @@ const Dashboard = () => {
                     <Link style={{textDecoration: 'none', color: 'black'}} to="/addworkoutform"> New Workout </Link>
                 </ButtonLink>
             <MainDashboard className="dashboard" style={{backgroundImage: `url(${imageUrl})` }}>
-                <WorkoutList/>      
+      <WorkoutList/>      
+
             </MainDashboard>
             </div>
         )

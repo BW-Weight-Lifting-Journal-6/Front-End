@@ -9,6 +9,8 @@ import Dashboard from './components/Dashboard'
 import SignUpForm from'./components/SignUpForm'
 import Login from './components/Login';
 import WorkoutForm from './components/WorkoutForm';
+import WorkoutList from './components/WorkoutList';
+
 
 import Workit from './components/workit';
 
@@ -57,13 +59,14 @@ function App() {
       <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/addworkoutform" component={WorkoutForm}/>
+
         <PrivateRoute exact path="/workit" component={Workit} />
         <PrivateRoute exact path="/editworkoutform" component={EditWorkoutForm} />
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={SignUpForm} />
         <Route exact path="/" component ={Landing} />
-        
+
       </Switch>
     </div>
   </Router>

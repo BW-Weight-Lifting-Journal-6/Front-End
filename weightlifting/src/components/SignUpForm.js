@@ -75,6 +75,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
                             {touched.username && errors.username && (
                             <p className="errors"> {errors.username}</p>
                             )}
+
                         <TextRegister><label className="Password">Password</label></TextRegister>
                             <InputRegister type="password" name="password" placeholder="Create a Password " />
                             {touched.password && errors.password && (
