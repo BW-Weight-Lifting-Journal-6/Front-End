@@ -1,7 +1,7 @@
-import React from "react";
-
+import React, {useContext} from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import axiosWithAuth from "../utils/axiosWithAuth";
 import { connect } from 'react-redux'
 
 import {deleteWorkout} from "../actions/"
@@ -31,23 +31,23 @@ const WorkoutCard = props => {
 
     const deleteWorkout = () => {
         props.deleteWorkout(id)
-        Processing()
+       // Processing()
     }
 
 
     const EditWorkout = () => {
         console.log('might work', props)
-        props.history.push(`/editworkout/${id}`)
+       props.history.push(`/editworkout/`)
     }
 
     return (
         <div className="workout-card">
             <div>
-                <h3>{props.name}</h3>
+                <h3>{props.exercise}</h3>
                 <p>Reps: {props.reps}</p>
-                <p>Muscle:{props.region}</p>
+                <p>Muscle:{props.muscle}</p>
             </div>
-            <Button onClick={EditWorkout}>Edit</Button>
+            <Button onClick={EditWorkout(id)}>Edit</Button>
             <Button onClick={deleteWorkout}>Delete</Button>
         </div>
 

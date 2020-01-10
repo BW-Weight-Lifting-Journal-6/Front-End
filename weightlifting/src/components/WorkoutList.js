@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import WorkoutCard from "./WorkoutCard"
 
 import styled from "styled-components";
@@ -24,15 +25,23 @@ const EachWork = styled.div`
    
 `;
 
-const WorkoutList = ({workouts, history}) => {
-   
+const WorkoutList = (props) => {
+
+  
+
+   const id = localStorage.getItem('id')
+
+   useEffect(() => {
+      props.getWorkout(id)
+
+   }, [])
    return (
       <Work>
-         {workouts.map(workout => {
+         {props.workouts.map(workout => {
             return (
 
-               <EachWork key={workout.id}>
-                  <WorkoutCard key={workout.id} history={history} workout={workout}/>
+               <EachWork>
+                  <WorkoutCard {...workout} {...props}/>
                </EachWork>
             )
          })}

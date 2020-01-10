@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { connect } from 'react-redux';
 
+import { connect } from 'react-redux';
+import axios from '../utils/axiosWithAuth';
 import { addWorkout } from '../actions';
-import jwt from "jsonwebtoken"
+
 
 import desktopAddWorkoutImage from '../images/addworkout.jpg';
 import mobileAddWorkoutImage from '../images/landing-mobile.jpg';
@@ -68,41 +69,40 @@ height: 35px;
 `
 
 const ButtonDash= styled.button`
-
 background-color: yellow;
 border-radius: 6px;
 font-size: 1.7rem;
 color:black;
 `;
 
-const user = jwt.decode(localStorage.getItem("token"))
-console.log('user', user);
-const WorkoutForm = (props) => {
-    
-    const [add, setAdd] = useState({
 
-        name: "",
+const WorkoutForm = (props) => {
+    const userId = localStorage.getItem('id')
+    const [add, setAdd] = useState({
+        exercise: "",
         reps: "",
-        region: "",
-        user_id: props.userId
-       
+        muscle: "",
+        users_id: 2
     });
+
 
     const handleChanges = e => {
 
         setAdd({ ...add, [e.target.name]: e.target.value })
+
     }
 
+    
 
     const Processing = id => {
         props.history.push('/workit');
         setTimeout(()=>{
             props.history.push(`/dashboard`)
-        }, 1500) 
+        }, 1000) 
     } 
 
     const handleSubmit = e => {
-        console.log(add);
+        
         e.preventDefault();
         props.addWorkout(add)
         Processing();    
@@ -110,6 +110,7 @@ const WorkoutForm = (props) => {
    
 
     const imageUrl = useWindowWidth() >= 650 ? desktopAddWorkoutImage : mobileAddWorkoutImage;
+
 
     return(
         <div>
@@ -122,21 +123,25 @@ const WorkoutForm = (props) => {
             <ContentWorkout>
             <TextWorkout>Exercise</TextWorkout>
             <InputWorkout placeholder='Name of Exercise' 
-                        name='name' 
+                        name='exercise' 
                         type= 'text'
-                        value={add.name} 
+                        value={add.exercise} 
+
                         onChange={handleChanges}/>
             <TextWorkout>Number of Reps</TextWorkout>
             <InputWorkout placeholder='Number of Reps' 
                         name='reps' 
                         type= 'text'
+
                         value={add.reps}
+
                         onChange={handleChanges}/>
             <TextWorkout>Focus</TextWorkout>
-            <InputWorkout placeholder='Muscle Region Targeted' 
-                        name='region' 
+            <InputWorkout placeholder='Muscle Group Targeted' 
+                        name='muscle' 
                         type= 'text'
-                        value={add.region}
+
+                        value={add.muscle}
                         onChange={handleChanges}/>
             </ContentWorkout>
             <ButtonWorkout type='submit' >Submit</ButtonWorkout>
@@ -168,7 +173,3 @@ const useWindowWidth = () => {
             error: state.workouts
         }
     }, {addWorkout}) (WorkoutForm);
-
-
-
-

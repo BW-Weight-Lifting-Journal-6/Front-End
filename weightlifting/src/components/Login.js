@@ -71,10 +71,7 @@ const Login = props => {
     axios
     .post('https://weightlifting-app.herokuapp.com/api/login', userCredentials)
     .then(res => {
-      console.log(res);
-      localStorage.setItem('token', res.data.payload)
-      
-     
+      localStorage.setItem('token', res.data.token)
       props.history.push('/dashboard')
     })
     .catch(err => console.error(err))

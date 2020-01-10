@@ -80,7 +80,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
                             {touched.password && errors.password && (
                             <p className="errors"> {errors.password}</p>
                             )}
-                        <ButtonRegister type="submit">Register New User</ButtonRegister>
+                        <ButtonRegister>Register New User</ButtonRegister>
                     </ContentRegister>
             </FormRegister>
         </MainRegister>

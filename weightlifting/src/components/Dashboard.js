@@ -36,7 +36,8 @@ const Dashboard = () => {
                     <Link style={{textDecoration: 'none', color: 'black'}} to="/addworkoutform"> New Workout </Link>
                 </ButtonLink>
             <MainDashboard className="dashboard" style={{backgroundImage: `url(${imageUrl})` }}>
-                <WorkoutList/>      
+      <WorkoutList/>      
+
             </MainDashboard>
             </div>
         )

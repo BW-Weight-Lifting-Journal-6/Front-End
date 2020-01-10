@@ -10,7 +10,9 @@ import SignUpForm from'./components/SignUpForm'
 import Login from './components/Login';
 import WorkoutForm from './components/WorkoutForm';
 
+
 import Workit from './components/workit';
+
 
 import logo from '../src/images/LiftlogoColored.png'
 import EditWorkoutForm from './components/EditWorkoutForm';
@@ -57,13 +59,13 @@ function App() {
       <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/addworkoutform" component={WorkoutForm}/>
+
         <PrivateRoute exact path="/workit" component={Workit} />
-        <PrivateRoute exact path="/editworkoutform" component={EditWorkoutForm} />
+        <PrivateRoute exact path="/editworkout/" component={EditWorkoutForm} />
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={SignUpForm} />
         <Route exact path="/" component ={Landing} />
-        
       </Switch>
     </div>
   </Router>

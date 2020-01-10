@@ -2,11 +2,8 @@ import { CREATE_WORKOUT_START, CREATE_WORKOUT_SUCCESS, CREATE_WORKOUT_FAILURE, D
 
 const initialState = {
     workouts: [],
-    isPosting: false,
     isFetching: false,
-    isDeleting: false,
-    error: '',
-    userId: localStorage.getItem('userId')
+    error: ''
 }
 
 export const reducer = (state = initialState, action) => {
@@ -21,7 +18,7 @@ export const reducer = (state = initialState, action) => {
         case CREATE_WORKOUT_SUCCESS:
             return {
                 ...state,
-                workouts: [...state, action.payload],
+                workouts: [...state],
                 error: null
             }
         case CREATE_WORKOUT_FAILURE:

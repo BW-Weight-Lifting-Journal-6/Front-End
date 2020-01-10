@@ -10,7 +10,7 @@ const EditWorkoutForm = (props) => {
         exercise: '',
         reps: '',
         muscle: '',
-        users_id: id
+        id: id
     })
 
 
@@ -21,7 +21,7 @@ const EditWorkoutForm = (props) => {
     const handleSubmit = event => {
         event.preventDefault();
         axiosWithAuth()
-            .put(`api/workout/${id}`, edit)
+            .put(`https://weight-lifting-api.herokuapp.com/api/workout/${id}`, edit)
             .then(response => {
                 console.log('response after adding workout', response.data);
                 props.history.push('/dashboard')
