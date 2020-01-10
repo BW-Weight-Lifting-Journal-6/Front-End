@@ -1,40 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-
 import WorkoutCard from "./WorkoutCard"
 
+import styled from "styled-components";
+import { connect } from 'react-redux'
+import { getWorkout } from "../actions/"
 
+const Work = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: 3rem;
+   max-width: 73rem;
+`;
 
-
-
-
+const EachWork = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 0.3rem solid #4169E1;
+   width: 13rem;
+   padding: 2%;
+   margin: 1rem 0;
+   
+`;
 
 const WorkoutList = (props) => {
-   const [workouts, setworkouts] = useState([])
-   
+
+   console.log('will it show?', props)
+
+   const id = localStorage.getItem('id')
 
    useEffect(() => {
-      const id = localStorage.getItem('id')
-      axiosWithAuth()
-         .get(`api/workout`)
+      props.getWorkout(id)
 
-         .then(res => {
-            console.log(res)
-            setworkouts(res.data)
-         })
    }, [])
    return (
-      <div>
-         {workouts.map(workout => {
+      <Work>
+         {props.workouts.map(workout => {
             return (
-               <div key={workout.id}>
-                  <WorkoutCard {...workout} {...props} />
-               </div>
+
+               <EachWork>
+                  <WorkoutCard {...workout} {...props}/>
+               </EachWork>
             )
          })}
-      </div>
+      </Work>
    )
 }
 
-export default WorkoutList
+export default connect( state => {
+   return {
+       workouts: state.workouts,
+       isFetching: state.isFetching,
+       error: state.workouts
+   }
+}, {getWorkout}) (WorkoutList);
 

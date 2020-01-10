@@ -47,7 +47,6 @@ const Landing = () => {
     return (
 
         <MainLanding className="landing" style={{backgroundImage: `url(${imageUrl})` }}>
-    
             <FormLanding>
             <TextLanding> New Around Here?</TextLanding>
             <ButtonLanding>   

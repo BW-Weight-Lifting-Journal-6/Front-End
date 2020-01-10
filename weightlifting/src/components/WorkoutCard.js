@@ -1,58 +1,64 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { connect } from 'react-redux'
+
+import {deleteWorkout} from "../actions/"
+
 
 const Button = styled.button`
     width: 3rem;
     margin: 2% auto;
-    color: white;
-    background-color: blue;
+    background-color: #4169E1;
+    color: #fff;
     font-size: 0.7rem;
     text-decoration: none;
 `;
 
-
-
-
 const WorkoutCard = props => {
-
-    console.log('testing props')
 
 
     const id = props.id;
 
-    const DeleteWorkout = () => {
-        axiosWithAuth()
-            .delete(`https://authbackend121.herokuapp.com/api/auth/workout/${id}`)
-            .then(response => {
-                console.log('deleted workout', response);
-            })
-            .catch(err => console.log(err.response));
+    const Processing = () => {
+        props.history.push('/workit');
+
+        setTimeout(()=>{
+            props.history.push('/')
+        }, 1000) 
+    }   
+
+    const deleteWorkout = () => {
+        props.deleteWorkout(id)
+       // Processing()
     }
 
-   
 
     const EditWorkout = () => {
-        console.log('did it work?', props)
-        props.history.push(`/editworkout/${id}`)
+        console.log('might work', props)
+       props.history.push(`/editworkout/`)
     }
 
-
     return (
-        <div >
-            <h2>Workout</h2>
+        <div className="workout-card">
             <div>
-                <Link to={`/workouts/${props.id}`}>Name: {props.workout}</Link>
-               
+                <h3>{props.exercise}</h3>
+                <p>Reps: {props.reps}</p>
+                <p>Muscle:{props.muscle}</p>
             </div>
-            <Button onClick={EditWorkout}>Edit</Button>
-            <Button onClick={DeleteWorkout}>Delete</Button>
-
+            <Button onClick={EditWorkout(id)}>Edit</Button>
+            <Button onClick={deleteWorkout}>Delete</Button>
         </div>
 
 
     );
 };
 
-export default WorkoutCard;
+export default connect( state => {
+    return {
+        workouts: state.workouts,
+        isFetching: state.isFetching,
+        error: state.workouts
+    }
+ }, {deleteWorkout}) (WorkoutCard);

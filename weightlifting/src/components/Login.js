@@ -71,7 +71,6 @@ const Login = props => {
     axios
     .post('https://weight-lifting-api.herokuapp.com/api/auth/login', userCredentials)
     .then(res => {
-      console.log(res)
       localStorage.setItem('token', res.data.token)
       props.history.push('/dashboard')
     })
@@ -101,7 +100,6 @@ const Login = props => {
                 onChange={handleChange} />
         </ContentLogin>
         <ButtonLogin> Log In </ButtonLogin>
-        
       </FormLogin>
     </MainLogin>
   );
