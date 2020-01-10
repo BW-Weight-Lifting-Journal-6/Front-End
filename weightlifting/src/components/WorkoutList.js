@@ -6,8 +6,8 @@ import WorkoutCard from "./WorkoutCard";
 
 import styled from "styled-components";
 
-import desktopAddWorkoutListImage from '../images/addworkout.jpg';
-import mobileAddWorkoutListImage from '../images/addworkout-mobile.jpg';
+import desktopAddWorkoutListImage from '../images/viewworkout.jpg';
+import mobileAddWorkoutListImage from '../images/viewworkout-mobile.jpg';
 
 const MainWorkoutList = styled.div`
 height: 89vh;
