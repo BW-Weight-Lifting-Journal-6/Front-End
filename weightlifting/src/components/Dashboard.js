@@ -15,14 +15,14 @@ justify-content: center;
 `
 
 
-const ButtonLink = styled.button`
 
+const ButtonLink = styled.button`
     background-color: yellow;
     border-radius: 6px;
     font-size: 1.7rem;
     color:black;
-
 `;
+
 
 
 

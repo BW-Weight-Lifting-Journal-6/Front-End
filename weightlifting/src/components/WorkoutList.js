@@ -27,7 +27,7 @@ const EachWork = styled.div`
 
 const WorkoutList = (props) => {
 
-  
+   console.log('will it show?', props)
 
    const id = localStorage.getItem('id')
 
