@@ -15,6 +15,7 @@ const Work = styled.div`
    max-width: 73rem;
 `;
 
+
 const EachWork = styled.div`
    display: flex;
    justify-content: center;
@@ -37,6 +38,7 @@ const WorkoutList = (props) => {
 
      
  
+
    }, [])
 
    const delWorkout = (id) => {
@@ -49,10 +51,12 @@ const WorkoutList = (props) => {
             return (
 
                <EachWork>
+
                   <Link to = {`/EditWorkout/${workout.id}`}>
                   <WorkoutCard {...workout} {...props}/>
                   </Link>
                   <button onClick={()=>{delWorkout(workout.id)}}>Delete</button>
+
                </EachWork>
             )
          })}
@@ -67,4 +71,5 @@ export default connect( state => {
        error: state.workouts
    }
 }, {getWorkout, deleteWorkout}) (WorkoutList);
+
 

@@ -26,6 +26,7 @@ const WorkoutCard = props => {
     const EditWorkout = id => {
         console.log('might work', props)
        props.history.push(`/editworkout/${id}`)
+
     }
 
     return (
@@ -35,8 +36,10 @@ const WorkoutCard = props => {
                 <p>Reps: {props.reps}</p>
                 <p>Muscle:{props.muscle}</p>
             </div>
+
          {/* <Button onClick={EditWorkout}>Edit</Button> */}
             {/* <Button onClick={deleteWorkout}>Delete</Button> */}
+
         </div>
 
 

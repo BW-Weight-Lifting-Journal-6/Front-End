@@ -11,6 +11,7 @@ const EditWorkoutForm = (props) => {
         reps: '',
         muscle: '',
         users_id: 2
+
     })
 
 

@@ -72,6 +72,7 @@ const Login = props => {
     .post('https://weight-lifting-api.herokuapp.com/api/auth/login', userCredentials)
     .then(res => {
       localStorage.setItem('token', res.data.token)
+
       props.history.push('/dashboard')
     })
     .catch(err => console.error(err))

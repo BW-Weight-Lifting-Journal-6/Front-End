@@ -12,10 +12,12 @@ import WorkoutForm from './components/WorkoutForm';
 import WorkoutList from './components/WorkoutList';
 import EditWorkoutForm from './components/EditWorkoutForm';
 
+
+import Workit from './components/workit';
+
 import Workit from './components/workit';
 
 import logo from '../src/images/LiftlogoColored.png'
-
 
 const Nav = styled.nav`
   display: flex;
@@ -61,7 +63,9 @@ function App() {
         <PrivateRoute path="/addworkoutform" component={WorkoutForm}/>
 
         <PrivateRoute exact path="/workit" component={Workit} />
+
         <PrivateRoute exact path="/editworkout/:id" component={EditWorkoutForm} />
+
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={SignUpForm} />

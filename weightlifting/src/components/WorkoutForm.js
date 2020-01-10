@@ -10,8 +10,6 @@ import { addWorkout } from '../actions';
 import desktopAddWorkoutImage from '../images/addworkout.jpg';
 import mobileAddWorkoutImage from '../images/landing-mobile.jpg';
 
-
-
 const MainWorkout = styled.div`
 height: 89vh;
 display: flex;
@@ -83,6 +81,7 @@ const WorkoutForm = (props) => {
         reps: "",
         muscle: "",
         users_id: 2
+
     });
 
 
@@ -175,3 +174,4 @@ const useWindowWidth = () => {
             error: state.workouts
         }
     }, {addWorkout}) (WorkoutForm);
+
