@@ -29,67 +29,6 @@ background-color: #ffffff;
 max-width: 80%;
 min-width: 400px;
 padding-bottom: 50px;
-`
-
-const NavDashboard = styled.div`
-dislplay: flex;
-flex-direction: row;
-align-items: space-around;
-background-color: lightgray;
-padding: 20px 0;
-width: 100%;
-`
-
-const TitleAddWorkout = styled.h3`
-text-align: center;
-margin: 10% 0;
-`
-
-const ContentWorkout = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 10px 0 40px 0;
-width: 90%;
-`
-
-const TextWorkout = styled.p`
-display: flex;
-flex-direction: column;
-`
-
-const InputWorkout =styled.input`
-padding: 5px 0;
-width: 100%;
-`
-
-const ButtonWorkout = styled.button`
-background-color: #17A2B8;
-border-radius: 8px;
-font-size: 1rem;
-width: 200px;
-height: 35px;
-`
-
-const MainWorkout = styled.div`
-height: 89vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 0 10%;
-`
-
-const FormWorkout = styled.form`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-border: 3px solid #17A2B8;
-background-color: #ffffff;
-max-width: 80%;
-min-width: 400px;
-padding-bottom: 50px;
 margin-top: -60px;
 `
 
@@ -128,7 +67,6 @@ height: 35px;
 `
 
 const ButtonDash= styled.button`
-
 background-color: yellow;
 border-radius: 6px;
 font-size: 1.7rem;
@@ -142,7 +80,8 @@ const WorkoutForm = (props) => {
         exercise: "",
         reps: "",
         muscle: "",
-        user_id: userId
+        users_id: 2
+
     });
 
 

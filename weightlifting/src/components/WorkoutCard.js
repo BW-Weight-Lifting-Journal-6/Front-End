@@ -18,26 +18,15 @@ const Button = styled.button`
 
 const WorkoutCard = props => {
 
-
+ console.log(props)
     const id = props.id;
 
-    const Processing = () => {
-        props.history.push('/workit');
-
-        setTimeout(()=>{
-            props.history.push('/')
-        }, 1000) 
-    }   
-
-    const deleteWorkout = () => {
-        props.deleteWorkout(id)
-        Processing()
-    }
 
 
-    const EditWorkout = () => {
+    const EditWorkout = id => {
         console.log('might work', props)
-        props.history.push(`/editworkout/${id}`)
+       props.history.push(`/editworkout/${id}`)
+
     }
 
     return (
@@ -47,8 +36,10 @@ const WorkoutCard = props => {
                 <p>Reps: {props.reps}</p>
                 <p>Muscle:{props.muscle}</p>
             </div>
-            <Button onClick={EditWorkout}>Edit</Button>
-            <Button onClick={deleteWorkout}>Delete</Button>
+
+         {/* <Button onClick={EditWorkout}>Edit</Button> */}
+            {/* <Button onClick={deleteWorkout}>Delete</Button> */}
+
         </div>
 
 
