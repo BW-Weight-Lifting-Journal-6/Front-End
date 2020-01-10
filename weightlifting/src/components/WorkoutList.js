@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import WorkoutCard from "./WorkoutCard"
-
+import {Link} from 'react-router-dom'
 import styled from "styled-components";
 import { connect } from 'react-redux'
 import { getWorkout } from "../actions/"
+import {deleteWorkout} from "../actions/"
 
 const Work = styled.div`
    display: flex;
@@ -13,6 +14,7 @@ const Work = styled.div`
    margin: 3rem;
    max-width: 73rem;
 `;
+
 
 const EachWork = styled.div`
    display: flex;
@@ -32,16 +34,29 @@ const WorkoutList = (props) => {
    const id = localStorage.getItem('id')
 
    useEffect(() => {
-      props.getWorkout(id)
+      props.getWorkout()
+
+     
+ 
 
    }, [])
+
+   const delWorkout = (id) => {
+      props.deleteWorkout(id)
+     // Processing()
+  }
    return (
       <Work>
          {props.workouts.map(workout => {
             return (
 
                <EachWork>
+
+                  <Link to = {`/EditWorkout/${workout.id}`}>
                   <WorkoutCard {...workout} {...props}/>
+                  </Link>
+                  <button onClick={()=>{delWorkout(workout.id)}}>Delete</button>
+
                </EachWork>
             )
          })}
@@ -55,5 +70,6 @@ export default connect( state => {
        isFetching: state.isFetching,
        error: state.workouts
    }
-}, {getWorkout}) (WorkoutList);
+}, {getWorkout, deleteWorkout}) (WorkoutList);
+
 

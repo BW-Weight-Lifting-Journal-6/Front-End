@@ -18,7 +18,8 @@ export const reducer = (state = initialState, action) => {
         case CREATE_WORKOUT_SUCCESS:
             return {
                 ...state,
-                workouts: [...state, action.payload],
+                workouts: [...state],
+
                 error: null
             }
         case CREATE_WORKOUT_FAILURE:
