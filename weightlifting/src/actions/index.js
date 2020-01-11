@@ -29,7 +29,7 @@ export const addWorkout = (add) => dispatch => {
         dispatch({type: CREATE_WORKOUT_SUCCESS, payload: response.data })
     })
     .catch(error => dispatch({type: CREATE_WORKOUT_FAILURE, payload: error}))
-     
+
 }
 
 export const deleteWorkout = id => dispatch => {
@@ -43,7 +43,6 @@ export const deleteWorkout = id => dispatch => {
     })
     .catch(error => dispatch({type: DELETE_WORKOUT_FAILURE, payload: error}))
 }
-
 
 export const getWorkout = () => dispatch => {
     dispatch({type: FETCH_WORKOUT_START })

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import desktopDashboardImage from '../images/dashboard.jpg';
 import mobileDashboardImage from '../images/dashboard-mobile.jpg';
+
 import WorkoutList from './WorkoutList';
 
 const MainDashboard = styled.div`
@@ -14,18 +15,14 @@ align-items: center;
 justify-content: center;
 `
 
-
-
 const ButtonLink = styled.button`
-
-    background-color: yellow;
-    border-radius: 6px;
-    font-size: 1.7rem;
-    color:black;
-
+background-color: #17A2B8;
+border-radius: 8px;
+font-size: 1rem;
+width: 200px;
+height: 35px;
+color: white;
 `;
-
-
 
 
 const Dashboard = () => {
@@ -34,11 +31,11 @@ const Dashboard = () => {
 
         return(
             <div>
-                 <ButtonLink> 
-                    <Link style={{textDecoration: 'none', color: 'black'}} to="/addworkoutform"> New Workout </Link>
-                </ButtonLink>
+            <ButtonLink> 
+                <Link style={{textDecoration: 'none', color: 'black'}} to="/addworkoutform"> New Workout </Link>
+            </ButtonLink>
             <MainDashboard className="dashboard" style={{backgroundImage: `url(${imageUrl})` }}>
-      <WorkoutList/>      
+            <WorkoutList/>      
 
             </MainDashboard>
             </div>
