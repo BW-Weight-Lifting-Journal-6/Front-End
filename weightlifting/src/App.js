@@ -9,11 +9,7 @@ import Dashboard from './components/Dashboard'
 import SignUpForm from'./components/SignUpForm'
 import Login from './components/Login';
 import WorkoutForm from './components/WorkoutForm';
-import WorkoutList from './components/WorkoutList';
 import EditWorkoutForm from './components/EditWorkoutForm';
-
-
-import Workit from './components/workit';
 
 import Workit from './components/workit';
 
