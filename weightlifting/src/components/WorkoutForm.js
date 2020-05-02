@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
 import { connect } from 'react-redux';
-import axios from '../utils/axiosWithAuth';
+
 import { addWorkout } from '../actions';
-
-
 import desktopAddWorkoutImage from '../images/addworkout.jpg';
 import mobileAddWorkoutImage from '../images/landing-mobile.jpg';
 
@@ -75,7 +72,7 @@ color:black;
 
 
 const WorkoutForm = (props) => {
-    const userId = localStorage.getItem('id')
+ 
     const [add, setAdd] = useState({
         exercise: "",
         reps: "",
