@@ -4,8 +4,8 @@ import WorkoutCard from "./WorkoutCard"
 // import {Link} from 'react-router-dom'
 import styled from "styled-components";
 import { connect } from 'react-redux'
-import { getWorkout } from "../actions/"
-import {deleteWorkout} from "../actions/"
+import { getWorkout } from "../actions"
+import {deleteWorkout} from "../actions"
 
 const Work = styled.div`
    display: flex;

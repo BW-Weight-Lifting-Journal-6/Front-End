@@ -8,12 +8,12 @@ export const FETCH_WORKOUT_SUCCESS = 'FETCH_WORKOUT_SUCCESS';
 export const FETCH_WORKOUT_FAILURE = 'FETCH_WORKOUT_FAILURE';
 
 export const CREATE_WORKOUT_START = 'CREATE_WORKOUT_START';
-export const CREATE_WORKOUT_SUCCESS = 'CREATE_WORKOUT_SUCCESS'
-export const CREATE_WORKOUT_FAILURE = 'CREATE_WORKOUT_FAILURE'
+export const CREATE_WORKOUT_SUCCESS = 'CREATE_WORKOUT_SUCCESS';
+export const CREATE_WORKOUT_FAILURE = 'CREATE_WORKOUT_FAILURE';
 
 export const DELETE_WORKOUT_START = 'CREATE_WORKOUT_START';
-export const DELETE_WORKOUT_SUCCESS = 'CREATE_WORKOUT_SUCCESS'
-export const DELETE_WORKOUT_FAILURE = 'CREATE_WORKOUT_FAILURE'
+export const DELETE_WORKOUT_SUCCESS = 'CREATE_WORKOUT_SUCCESS';
+export const DELETE_WORKOUT_FAILURE = 'CREATE_WORKOUT_FAILURE';
 
 
 
@@ -35,7 +35,7 @@ export const addWorkout = (add) => dispatch => {
 export const deleteWorkout = id => dispatch => {
     dispatch({type: DELETE_WORKOUT_START})
     axiosWithAuth()
-    .delete(`api/workout/${id}`)
+    .delete(`https://weight-lifting-api.herokuapp.com/api/workout/${id}`)
 
     .then( response => {
         console.log('response from DELETE', response);
